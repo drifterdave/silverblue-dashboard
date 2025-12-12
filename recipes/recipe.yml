@@ -23,7 +23,6 @@ modules:
         - https://pkg.surfacelinux.com/fedora/linux-surface.repo
     install:
       packages:
-        - makecache
         - kernel-surface
         - kernel-surface-devel
         - iptsd
