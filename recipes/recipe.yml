@@ -17,24 +17,25 @@ modules:
     repos:
       files:
         - https://pkg.surfacelinux.com/fedora/linux-surface.repo
-
-  - type: rpm-ostree
-    repos:
-      - https://pkg.surfacelinux.com/fedora/linux-surface.repo
     replace:
-      - https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm      
-    remove:
-      - kernel-core
-      - kernel-modules
-      - kernel-modules-extra
-      - libwacom
-      - libwacom-data
+      - from-repo: https://pkg.surfacelinux.com/fedora/linux-surface.repo
+        packages:
+        - old: kernel
+          new: kernel-surface
+        - old: kernel-core
+          new: kernel-surface-core
+        - old: kernel-modules
+          new: kernel-surface-modules
+        - old: kernel-modules-extra
+          new: kernel-surface-modules-extra
+        - old: libwacom
+          new: libwacom-surface
+        - old: libwacom-data
+          new: libwacom-surface-data
     install:
-      - kernel-surface
+      packages:
       - kernel-surface-devel
       - iptsd
-      - libwacom-surface 
-      - libwacom-surface-data
 
 
 
