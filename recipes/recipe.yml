@@ -21,17 +21,21 @@ modules:
   - type: rpm-ostree
     repos:
       - https://pkg.surfacelinux.com/fedora/linux-surface.repo
-    install:
-      - kernel-surface
-      - kernel-surface-devel
-      - iptsd
-      - libwacom-surface 
-      - libwacom-surface-data
+    replace:
+      - https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm      
     remove:
       - kernel-core
       - kernel-modules
       - kernel-modules-extra
       - libwacom
       - libwacom-data
+    install:
+      - kernel-surface
+      - kernel-surface-devel
+      - iptsd
+      - libwacom-surface 
+      - libwacom-surface-data
+
+
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
