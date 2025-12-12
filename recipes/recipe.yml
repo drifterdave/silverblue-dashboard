@@ -12,28 +12,26 @@ image-version: 42 # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
     repos:
       files:
         - https://pkg.surfacelinux.com/fedora/linux-surface.repo
+
+  - type: rpm-ostree
+    repos:
+      - https://pkg.surfacelinux.com/fedora/linux-surface.repo
     install:
-      packages:
-        - kernel-surface
-        - kernel-surface-devel
-        - iptsd
-        - libwacom-surface 
-        - libwacom-surface-data
+      - kernel-surface
+      - kernel-surface-devel
+      - iptsd
+      - libwacom-surface 
+      - libwacom-surface-data
     remove:
-      packages:
-        - kernel-core
-        - kernel-modules
-        - kernel-modules-extra
-        - libwacom
-        - libwacom-data
+      - kernel-core
+      - kernel-modules
+      - kernel-modules-extra
+      - libwacom
+      - libwacom-data
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
